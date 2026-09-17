@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="SneakerShop — оригинальные кроссовки и streetwear в Алматы и Астане."
+    />
+    <title>SneakerShop / Алматы • Астана</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
+    />
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body>
+    <div class="announcement">
+      <span data-i18n="shipping">Бесплатная доставка по Казахстану</span>
+      <span data-i18n="live">Актуальный ассортимент в наших магазинах</span>
+    </div>
+    <header class="site-header">
+      <a class="brand" href="./index.html" aria-label="SneakerShop home"
+        ><span class="brand-mark">S</span><span>SNEAKERSHOP</span></a
+      >
+      <nav class="main-nav" aria-label="Основная навигация">
+        <a class="active" href="./index.html" data-i18n="shop">Магазин</a>
+        <a href="./pages/profile.html" data-i18n="account">Аккаунт</a>
+        <a href="./pages/admin.html" data-i18n="studio">Студия</a>
+      </nav>
+      <div class="header-actions">
+        <button
+          class="icon-button"
+          id="search-toggle"
+          aria-label="Открыть поиск"
+        >
+          ⌕
+        </button>
+        <div class="language-switcher" aria-label="Выбор языка">
+          <button data-lang="kk">KK</button><button data-lang="ru">RU</button
+          ><button data-lang="en">EN</button>
+        </div>
+        <a class="bag-link" href="./pages/cart.html"
+          >Bag <span id="cart-count">0</span></a
+        >
+        <button class="menu-toggle" id="menu-toggle" aria-label="Открыть меню">
+          ☰
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-band" aria-label="Избранные модели">
+        <div
+          class="hero-slider splide"
+          id="hero-slider"
+          aria-label="Избранные модели"
+        >
+          <div class="splide__track">
+            <ul class="splide__list">
+              <li class="hero-slide splide__slide">
+                <div class="hero-copy">
+                  <h1>Move in<br /><em>your own.</em></h1>
+                  <p class="hero-text">
+                    Оригинальные лимитированные кроссовки, streetwear и
+                    аксессуары. Онлайн и в наших магазинах.
+                  </p>
+                  <a
+                    class="button button-light"
+                    href="#catalog"
+                    data-i18n="explore"
+                    >Смотреть коллекцию</a
+                  >
+                </div>
+                <div class="hero-visual">
+                  <img
+                    src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1000&q=85"
+                    alt="Красные кроссовки Nike"
+                    loading="eager"
+                  />
+                </div>
+              </li>
+              <li class="hero-slide splide__slide">
+                <div class="hero-copy">
+                  <h1>City<br /><em>frequency.</em></h1>
+                  <p class="hero-text">
+                    Повседневные силуэты для быстрого ритма города. Новые
+                    поступления уже в Алматы и Астане.
+                  </p>
+                  <a
+                    class="button button-light"
+                    href="#catalog"
+                    data-i18n="explore"
+                    >Смотреть коллекцию</a
+                  >
+                </div>
+                <div class="hero-visual">
+                  <img
+                    src="https://images.unsplash.com/photo-1539185441755-769473a23570?auto=format&fit=crop&w=1000&q=85"
+                    alt="Светлые кроссовки New Balance"
+                    loading="lazy"
+                  />
+                </div>
+              </li>
+              <li class="hero-slide splide__slide">
+                <div class="hero-copy">
+                  <h1>Find your<br /><em>next pair.</em></h1>
+                  <p class="hero-text">
+                    Три направления, один личный стиль. Собрали модели, которые
+                    не теряются в толпе.
+                  </p>
+                  <a
+                    class="button button-light"
+                    href="#catalog"
+                    data-i18n="explore"
+                    >Смотреть коллекцию</a
+                  >
+                </div>
+                <div class="hero-visual">
+                  <img
+                    src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=1000&q=85"
+                    alt="Белые кроссовки adidas"
+                    loading="lazy"
+                  />
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="catalog-section" id="catalog">
+        <div class="section-heading">
+          <div><h2 data-i18n="arrivals">Новое поступление</h2></div>
+          <p class="section-note">
+            <span data-i18n="live">Актуальные остатки в магазинах</span
+            ><br />Алматы / Астана
+          </p>
+        </div>
+        <div class="toolbar">
+          <div class="filter-row" role="group" aria-label="Фильтры каталога">
+            <button
+              class="filter-button active"
+              data-filter="all"
+              data-i18n="all"
+            >
+              Все
+            </button>
+            <button
+              class="filter-button"
+              data-filter="running"
+              data-i18n="running"
+            >
+              Беговые
+            </button>
+            <button
+              class="filter-button"
+              data-filter="lifestyle"
+              data-i18n="lifestyle"
+            >
+              Lifestyle
+            </button>
+            <button
+              class="filter-button"
+              data-filter="basketball"
+              data-i18n="basketball"
+            >
+              Баскетбол
+            </button>
+          </div>
+          <div class="toolbar-right">
+            <label class="sort-control"
+              >Город<select id="city-select">
+                <option value="all">Все магазины</option>
+                <option value="almaty">Almaty</option>
+                <option value="astana">Astana</option>
+              </select></label
+            ><label class="sort-control"
+              >Сортировать по
+              <select id="sort-select">
+                <option value="newest" data-i18n="newest">Новинки</option>
+                <option value="price-asc" data-i18n="priceAsc">
+                  Цена: сначала дешевле
+                </option>
+                <option value="price-desc" data-i18n="priceDesc">
+                  Цена: сначала дороже
+                </option>
+              </select></label
+            >
+          </div>
+        </div>
+        <div class="search-panel" id="search-panel" hidden>
+          <input
+            id="search-input"
+            type="search"
+            data-i18n-placeholder="search"
+            placeholder="Поиск по названию или бренду"
+            autocomplete="off"
+          /><span>⌕</span>
+        </div>
+        <div class="product-grid" id="product-grid" aria-live="polite"></div>
+        <div class="catalog-footer">
+          <p id="catalog-status" data-i18n="loading">Загружаем товары...</p>
+          <button
+            class="button button-dark"
+            id="load-more"
+            data-i18n="loadMore"
+          >
+            Показать ещё
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand" href="./index.html"
+        ><span class="brand-mark">S</span><span>SNEAKERSHOP</span></a
+      >
+      <p>@sneakershopata<br />Алматы / Астана / online</p>
+      <span class="footer-code">KZ / 2026</span>
+    </footer>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script type="module" src="./js/catalog.js"></script>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Studio / NORTHSTAR</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
+  <body class="inner-page">
+    <header class="site-header">
+      <a class="brand" href="../index.html"
+        ><span class="brand-mark">N</span><span>NORTHSTAR / STUDIO</span></a
+      ><a href="../index.html">Exit studio ↗</a>
+    </header>
+    <main class="admin-page">
+      <p class="eyebrow">PRIVATE / ADMIN</p>
+      <h1>Product<br /><em>studio.</em></h1>
+      <div class="admin-layout">
+        <form id="product-form" class="admin-form">
+          <h2>Add product</h2>
+          <input name="title" placeholder="Product title" required /><input
+            name="brand"
+            placeholder="Brand"
+            required
+          />
+          <div class="form-row">
+            <input
+              name="price"
+              type="number"
+              placeholder="Price"
+              required
+            /><input name="stock" type="number" placeholder="Stock" required />
+          </div>
+          <select name="category">
+            <option>running</option>
+            <option>lifestyle</option>
+            <option>basketball</option></select
+          ><input name="sizes" placeholder="Sizes: 40, 41, 42" required /><input
+            name="image"
+            type="url"
+            placeholder="Image URL"
+          /><textarea name="description" placeholder="Description"></textarea
+          ><button class="button button-dark">
+            Publish pair <span>↗</span>
+          </button>
+        </form>
+        <section>
+          <p class="eyebrow">LIVE CATALOG</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Brand</th>
+                  <th>Price</th>
+                  <th>Stock</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="admin-products"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script type="module" src="../js/admin.js"></script>
+  </body>
+</html>
