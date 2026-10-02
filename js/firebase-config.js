@@ -2,14 +2,14 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/fireba
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
-// Replace these values with the Web app config from Firebase Console.
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyBY358TeHyaswRfEHRy3B7_bBBkgbyapRE",
+    authDomain: "sneakershop-9147c.firebaseapp.com",
+    projectId: "sneakershop-9147c",
+    storageBucket: "sneakershop-9147c.firebasestorage.app",
+    messagingSenderId: "241586277681",
+    appId: "1:241586277681:web:61169099fa4ab83449b410",
+    measurementId: "G-LTHGGT1516"
 };
 
 export const firebaseReady = !firebaseConfig.apiKey.startsWith("YOUR_");

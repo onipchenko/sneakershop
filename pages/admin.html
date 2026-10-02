@@ -3,66 +3,136 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Studio / NORTHSTAR</title>
+    <title>Studio / SneakerShop</title>
     <link rel="stylesheet" href="../styles/style.css" />
   </head>
   <body class="inner-page">
     <header class="site-header">
       <a class="brand" href="../index.html"
-        ><span class="brand-mark">N</span><span>NORTHSTAR / STUDIO</span></a
-      ><a href="../index.html">Exit studio ↗</a>
+        ><span class="brand-mark">S</span><span>SNEAKERSHOP / STUDIO</span></a
+      >
+      <a href="../index.html">← <span data-i18n="shop">Магазин</span></a>
     </header>
+
     <main class="admin-page">
       <p class="eyebrow">PRIVATE / ADMIN</p>
-      <h1>Product<br /><em>studio.</em></h1>
-      <div class="admin-layout">
-        <form id="product-form" class="admin-form">
-          <h2>Add product</h2>
-          <input name="title" placeholder="Product title" required /><input
-            name="brand"
-            placeholder="Brand"
-            required
-          />
-          <div class="form-row">
-            <input
-              name="price"
-              type="number"
-              placeholder="Price"
-              required
-            /><input name="stock" type="number" placeholder="Stock" required />
-          </div>
-          <select name="category">
-            <option>running</option>
-            <option>lifestyle</option>
-            <option>basketball</option></select
-          ><input name="sizes" placeholder="Sizes: 40, 41, 42" required /><input
-            name="image"
-            type="url"
-            placeholder="Image URL"
-          /><textarea name="description" placeholder="Description"></textarea
-          ><button class="button button-dark">
-            Publish pair <span>↗</span>
-          </button>
-        </form>
-        <section>
-          <p class="eyebrow">LIVE CATALOG</p>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>Brand</th>
-                  <th>Price</th>
-                  <th>Stock</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody id="admin-products"></tbody>
-            </table>
-          </div>
-        </section>
+      <h1><span data-i18n="adminTitle">Студия</span><br /><em>.</em></h1>
+
+      <!-- СТАТИСТИКА -->
+      <div id="admin-stats" class="stats-grid">
+        <p class="muted" data-i18n="loading">Загружаем…</p>
+      </div>
+
+      <!-- ТАБЫ -->
+      <nav class="admin-tabs" role="tablist">
+        <button class="admin-tab-btn active" data-tab="products" data-i18n="products">Товары</button>
+        <button class="admin-tab-btn" data-tab="orders" data-i18n="orders">Заказы</button>
+        <button class="admin-tab-btn" data-tab="users" data-i18n="users">Пользователи</button>
+        <button class="admin-tab-btn" data-tab="reviews" data-i18n="moderation">Модерация</button>
+      </nav>
+
+      <!-- ТОВАРЫ -->
+      <div id="tab-products" class="admin-tab-panel">
+        <div class="admin-layout">
+          <form id="product-form" class="admin-form">
+            <h2 id="form-title" data-i18n="addProduct">Добавить товар</h2>
+
+            <input name="title" data-i18n-placeholder="productTitle" placeholder="Название товара" required />
+            <input name="brand" data-i18n-placeholder="brandPh" placeholder="Бренд" required />
+
+            <div class="form-row">
+              <input name="price" type="number" data-i18n-placeholder="pricePh" placeholder="Цена (KZT)" required />
+              <select name="category">
+                <option value="running" data-i18n="running">Беговые</option>
+                <option value="lifestyle" data-i18n="lifestyle">Повседневные</option>
+                <option value="basketball" data-i18n="basketball">Баскетбол</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <input name="stockAlmaty" type="number" min="0" data-i18n-placeholder="stockAlmaty" placeholder="Остаток Алматы" />
+              <input name="stockAstana" type="number" min="0" data-i18n-placeholder="stockAstana" placeholder="Остаток Астана" />
+            </div>
+
+            <input name="sizes" data-i18n-placeholder="sizesPh" placeholder="Размеры: 40, 41, 42" required />
+            <input name="image" type="url" data-i18n-placeholder="imagePh" placeholder="URL изображения" />
+            <textarea name="description" data-i18n-placeholder="descPh" placeholder="Описание"></textarea>
+
+            <div class="form-row">
+              <button class="button button-dark">
+                <span data-i18n="publish">Опубликовать</span> <span>↗</span>
+              </button>
+              <button type="button" id="cancel-edit" hidden data-i18n="cancelEdit">Отменить</button>
+            </div>
+          </form>
+
+          <section>
+            <p class="eyebrow" data-i18n="liveCatalog">ЖИВОЙ КАТАЛОГ</p>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th data-i18n="productTitle">Название</th>
+                    <th data-i18n="brandPh">Бренд</th>
+                    <th>Категория</th>
+                    <th data-i18n="pricePh">Цена</th>
+                    <th>Сток</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="admin-products"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <!-- ЗАКАЗЫ -->
+      <div id="tab-orders" class="admin-tab-panel" hidden>
+        <p class="eyebrow" data-i18n="orders">ЗАКАЗЫ</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Дата</th>
+                <th data-i18n="city">Город</th>
+                <th>Сумма</th>
+                <th>Статус</th>
+                <th>Состав</th>
+              </tr>
+            </thead>
+            <tbody id="admin-orders"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ПОЛЬЗОВАТЕЛИ -->
+      <div id="tab-users" class="admin-tab-panel" hidden>
+        <p class="eyebrow" data-i18n="users">ПОЛЬЗОВАТЕЛИ</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Имя</th>
+                <th>Email</th>
+                <th>Роль</th>
+                <th>Дата</th>
+              </tr>
+            </thead>
+            <tbody id="admin-users"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ОТЗЫВЫ -->
+      <div id="tab-reviews" class="admin-tab-panel" hidden>
+        <p class="eyebrow" data-i18n="moderation">МОДЕРАЦИЯ</p>
+        <div id="admin-reviews"></div>
       </div>
     </main>
+
+    <div class="toast" id="toast" role="status"></div>
     <script type="module" src="../js/admin.js"></script>
   </body>
 </html>

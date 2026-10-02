@@ -3,42 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bag / SneakerShop</title>
+    <title>Корзина / SneakerShop</title>
     <link rel="stylesheet" href="../styles/style.css" />
   </head>
   <body class="inner-page">
     <header class="site-header">
       <a class="brand" href="../index.html"
         ><span class="brand-mark">S</span><span>SNEAKERSHOP</span></a
-      ><a class="bag-link" href="../index.html">Continue shopping ↗</a>
+      >
+      <a class="bag-link" href="../index.html" data-i18n="continueShopping">Продолжить покупки ↗</a>
     </header>
+
     <main class="cart-page">
       <p class="eyebrow">YOUR EDIT</p>
-      <h1>Shopping<br /><em>bag.</em></h1>
+      <h1><span data-i18n="yourBag">Ваша корзина</span><br /><em>.</em></h1>
+
       <div class="cart-layout">
         <section id="cart-items">
           <div class="skeleton cart-skeleton"></div>
         </section>
+
         <aside class="cart-summary">
-          <label class="city-choice"
-            >Получить в городе
+          <label class="city-choice">
+            <span data-i18n="getInCity">Получить в городе</span>
             <select id="checkout-city">
-              <option value="almaty">Алматы</option>
-              <option value="astana">Астана</option>
-            </select></label
-          >
-          <p>Subtotal <strong id="cart-total">$0</strong></p>
-          <p>Shipping <span>Рассчитаем при оформлении</span></p>
+              <option value="almaty" data-i18n="almaty">Алматы</option>
+              <option value="astana" data-i18n="astana">Астана</option>
+            </select>
+          </label>
+
+          <p>
+            <span data-i18n="subtotal">Сумма</span>
+            <strong id="cart-total">0 KZT</strong>
+          </p>
+          <p>
+            <span data-i18n="shipping2">Доставка</span>
+            <span data-i18n="shippingNote">Рассчитаем при оформлении</span>
+          </p>
           <hr />
           <p class="summary-total">
-            Total <strong id="cart-total-copy">$0</strong>
+            <span data-i18n="total">Итого</span>
+            <strong id="cart-total-copy">0 KZT</strong>
           </p>
+
           <button class="button button-dark" id="checkout">
-            Checkout <span>↗</span>
+            <span data-i18n="checkout">Оформить заказ</span> <span>↗</span>
           </button>
         </aside>
       </div>
     </main>
+
+    <div class="toast" id="toast" role="status"></div>
     <script type="module" src="../js/cart-page.js"></script>
   </body>
 </html>

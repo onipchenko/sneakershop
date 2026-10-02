@@ -1,30 +1,52 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    function signedIn() { return request.auth != null; }
-    function isAdmin() { return signedIn() && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'; }
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return signedIn() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return signedIn() &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    // Products — публичное чтение, запись только admin
     match /products/{productId} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow create, update, delete: if isAdmin();
     }
+
+    // Users — каждый читает/обновляет только своё, admin читает всё
     match /users/{userId} {
-      allow read, update: if signedIn() && request.auth.uid == userId;
-      allow create: if signedIn() && request.auth.uid == userId;
+      allow read, update: if isOwner(userId) || isAdmin();
+      allow create: if isOwner(userId);
       allow list: if isAdmin();
-      allow update: if isAdmin();
     }
+
+    // Cart — только сам пользователь
     match /cart/{userId} {
-      allow read, write: if signedIn() && request.auth.uid == userId;
+      allow read, write: if isOwner(userId);
     }
+
+    // Orders — создаёт авторизованный пользователь (своя userId), читает сам + admin, меняет статус admin
     match /orders/{orderId} {
       allow create: if signedIn() && request.resource.data.userId == request.auth.uid;
       allow read: if signedIn() && (resource.data.userId == request.auth.uid || isAdmin());
       allow update: if isAdmin();
+      allow delete: if isAdmin();
+      allow list: if isAdmin();
     }
+
+    // Reviews — публичное чтение, создаёт авторизованный (со своим userId), удаляет/редактирует сам + admin
     match /reviews/{reviewId} {
       allow read: if true;
       allow create: if signedIn() && request.resource.data.userId == request.auth.uid;
-      allow update, delete: if signedIn() && resource.data.userId == request.auth.uid;
+      allow update, delete: if signedIn() && (resource.data.userId == request.auth.uid || isAdmin());
     }
   }
 }

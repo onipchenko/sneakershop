@@ -1,0 +1,23 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "seed.js",
+      "serviceAccountKey*.json",
+      "public/**",
+      "functions/**",
+      "dataconnect/**",
+      "FIREBASE-SETUP.md",
+      "MOCK-DATA.md",
+      "technical_specifications-3.md",
+      "package*.json"
+    ]
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  }
+}

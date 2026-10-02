@@ -47,7 +47,7 @@
           ><button data-lang="en">EN</button>
         </div>
         <a class="bag-link" href="./pages/cart.html"
-          >Bag <span id="cart-count">0</span></a
+          >Корзина <span id="cart-count">0</span></a
         >
         <button class="menu-toggle" id="menu-toggle" aria-label="Открыть меню">
           ☰
@@ -66,7 +66,7 @@
             <ul class="splide__list">
               <li class="hero-slide splide__slide">
                 <div class="hero-copy">
-                  <h1>Move in<br /><em>your own.</em></h1>
+                  <h1><span class="blacktext">Move in</span><br /><em>your own.</em></h1>
                   <p class="hero-text">
                     Оригинальные лимитированные кроссовки, streetwear и
                     аксессуары. Онлайн и в наших магазинах.
@@ -80,7 +80,7 @@
                 </div>
                 <div class="hero-visual">
                   <img
-                    src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1000&q=85"
+                    src="./img/classic-adidas.jpg"
                     alt="Красные кроссовки Nike"
                     loading="eager"
                   />
@@ -88,7 +88,7 @@
               </li>
               <li class="hero-slide splide__slide">
                 <div class="hero-copy">
-                  <h1>City<br /><em>frequency.</em></h1>
+                  <h1><span class="blacktext">City</span><br /><em>frequency.</em></h1>
                   <p class="hero-text">
                     Повседневные силуэты для быстрого ритма города. Новые
                     поступления уже в Алматы и Астане.
@@ -102,7 +102,7 @@
                 </div>
                 <div class="hero-visual">
                   <img
-                    src="https://images.unsplash.com/photo-1539185441755-769473a23570?auto=format&fit=crop&w=1000&q=85"
+                    src="./img/dunk.jpg"
                     alt="Светлые кроссовки New Balance"
                     loading="lazy"
                   />
@@ -110,7 +110,7 @@
               </li>
               <li class="hero-slide splide__slide">
                 <div class="hero-copy">
-                  <h1>Find your<br /><em>next pair.</em></h1>
+                  <h1><span class="blacktext">Find your</span><br /><em>next pair.</em></h1>
                   <p class="hero-text">
                     Три направления, один личный стиль. Собрали модели, которые
                     не теряются в толпе.
@@ -124,7 +124,7 @@
                 </div>
                 <div class="hero-visual">
                   <img
-                    src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=1000&q=85"
+                    src="./img/bags.jpg"
                     alt="Белые кроссовки adidas"
                     loading="lazy"
                   />
@@ -139,7 +139,7 @@
         <div class="section-heading">
           <div><h2 data-i18n="arrivals">Новое поступление</h2></div>
           <p class="section-note">
-            <span data-i18n="live">Актуальные остатки в магазинах</span
+            <span data-i18n="live">Актуальный ассортимент в магазинах</span
             ><br />Алматы / Астана
           </p>
         </div>
@@ -175,24 +175,68 @@
             </button>
           </div>
           <div class="toolbar-right">
-            <label class="sort-control"
-              >Город<select id="city-select">
-                <option value="all">Все магазины</option>
-                <option value="almaty">Almaty</option>
-                <option value="astana">Astana</option>
-              </select></label
-            ><label class="sort-control"
-              >Сортировать по
-              <select id="sort-select">
+            <div class="select-field">
+              <span class="select-label" id="city-label" data-i18n="city"
+                >Город</span
+              >
+              <button
+                type="button"
+                class="select-trigger"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+                aria-labelledby="city-label"
+              >
+                <span class="select-value">Все магазины</span>
+                <span class="select-chevron" aria-hidden="true"></span>
+              </button>
+              <ul class="select-menu" role="listbox" aria-labelledby="city-label">
+                <li role="option" data-value="all" aria-selected="true" data-i18n="allStores">
+                  Все магазины
+                </li>
+                <li role="option" data-value="almaty" data-i18n="almaty">Алматы</li>
+                <li role="option" data-value="astana" data-i18n="astana">Астана</li>
+              </ul>
+              <select id="city-select" class="select-native" tabindex="-1" aria-hidden="true">
+                <option value="all" data-i18n="allStores">Все магазины</option>
+                <option value="almaty" data-i18n="almaty">Алматы</option>
+                <option value="astana" data-i18n="astana">Астана</option>
+              </select>
+            </div>
+            <div class="select-field">
+              <span class="select-label" id="sort-label" data-i18n="sort"
+                >Сортировать</span
+              >
+              <button
+                type="button"
+                class="select-trigger"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+                aria-labelledby="sort-label"
+              >
+                <span class="select-value">Новинки</span>
+                <span class="select-chevron" aria-hidden="true"></span>
+              </button>
+              <ul class="select-menu" role="listbox" aria-labelledby="sort-label">
+                <li role="option" data-value="newest" aria-selected="true" data-i18n="newest">
+                  Новинки
+                </li>
+                <li role="option" data-value="price-asc" data-i18n="priceAsc">
+                  Сначала дешевле
+                </li>
+                <li role="option" data-value="price-desc" data-i18n="priceDesc">
+                  Сначала дороже
+                </li>
+              </ul>
+              <select id="sort-select" class="select-native" tabindex="-1" aria-hidden="true">
                 <option value="newest" data-i18n="newest">Новинки</option>
                 <option value="price-asc" data-i18n="priceAsc">
-                  Цена: сначала дешевле
+                  Сначала дешевле
                 </option>
                 <option value="price-desc" data-i18n="priceDesc">
-                  Цена: сначала дороже
+                  Сначала дороже
                 </option>
-              </select></label
-            >
+              </select>
+            </div>
           </div>
         </div>
         <div class="search-panel" id="search-panel" hidden>
@@ -206,13 +250,12 @@
         </div>
         <div class="product-grid" id="product-grid" aria-live="polite"></div>
         <div class="catalog-footer">
-          <p id="catalog-status" data-i18n="loading">Загружаем товары...</p>
           <button
             class="button button-dark"
             id="load-more"
             data-i18n="loadMore"
           >
-            Показать ещё
+            <span class="button-more">Показать ещё</span>
           </button>
         </div>
       </section>
@@ -222,7 +265,7 @@
       <a class="brand" href="./index.html"
         ><span class="brand-mark">S</span><span>SNEAKERSHOP</span></a
       >
-      <p>@sneakershopata<br />Алматы / Астана / online</p>
+      <p><span class="footer-mail">@sneakershopata</span> <br />Алматы / Астана / online</p>
       <span class="footer-code">KZ / 2026</span>
     </footer>
     <div class="toast" id="toast" role="status"></div>
